@@ -1,5 +1,8 @@
 development:
-  adapter: async
+  adapter: redis
+  url: redis://redis:6379
+  reconnect_attempts: 5 # 再接続試行回数(default:1)
+  reconnect_delay: 20 # 再接続待ち時間(default:0)
 
 test:
   adapter: test
