@@ -5,4 +5,3 @@ if [ ! -f .cognito/db/local_29ImIc0f.json ]; then
 fi
 
 bundle install --jobs 10 --retry 5
-bundle exec pumactl start
