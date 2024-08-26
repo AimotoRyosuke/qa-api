@@ -1,0 +1,46 @@
+FROM node:18.18.0-buster-slim AS node
+FROM ruby:3.2.4-slim-bullseye AS builder
+ARG pgversion=13
+ARG secret_key_base
+ENV SECRET_KEY_BASE $secret_key_base
+ENV LANG ja_JP.UTF-8
+ENV APP_HOME /rails-api
+
+RUN apt update && \
+  apt install -y curl nodejs file tzdata less lsb-release wget gnupg2 graphviz\
+  build-essential ruby-dev git pkg-config libxml2-dev libxslt-dev imagemagick libvips openssl --no-install-recommends && \
+  cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+RUN sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && \
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+  apt update && \
+  apt install -y postgresql-client-${pgversion} libpq-dev --no-install-recommends && \
+  apt clean && \
+  rm -rf /var/lib/apt/lists/*
+
+FROM builder AS bundle
+
+WORKDIR $APP_HOME
+COPY Gemfile Gemfile.lock ./
+RUN export CFLAGS=-Wno-error && export CXXFLAGS=-Wno-error && \
+  gem install bundler -v 2.5.17 && \
+  bundle install --jobs 10 --retry 5
+
+
+FROM builder AS app
+
+# Copy Imagemagick policy file
+COPY policy.xml /etc/ImageMagick-6/
+
+COPY --from=bundle /usr/local/bundle /usr/local/bundle
+
+COPY . $APP_HOME
+
+WORKDIR $APP_HOME
+
+# Create directory for puma pid file
+RUN mkdir -p tmp/pids
+
+# NOTE: Make the contents from here on up the same in Dockerfile.local and Dockerfile
+
+ENTRYPOINT [ "./entrypoint.sh" ]
