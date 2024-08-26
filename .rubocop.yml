@@ -1,8 +1,641 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+require:
+  - rubocop-rspec
+  - rubocop-rails
+inherit_from: .rubocop_todo.yml
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+# https://github.com/discourse/discourse/blob/master/.rubocop.yml
+AllCops:
+  TargetRubyVersion: 3.2
+  DisabledByDefault: true
+  NewCops: disable
+  Exclude:
+    - "bin/*"
+    - "db/data_schema.rb"
+    - "db/schema.rb"
+    - "bundle/**/*"
+    - "vendor/**/*"
+    - "public/**/*"
+    - "tmp/**/*"
+    - "lambda/cognito-patient-triggers/node_modules/**/*"
+
+# ============ Bundler ============
+# https://docs.rubocop.org/rubocop/1.51/cops_bundler.html
+
+Bundler:
+  Enabled: true
+
+# ============ Gemspec ============
+# https://docs.rubocop.org/rubocop/1.51/cops_gemspec.html
+
+Gemspec:
+  Enabled: true
+
+# ============ Layout ============
+# https://docs.rubocop.org/rubocop/1.51/cops_layout.html
+
+# 1行は最大文字数
+Layout/LineLength:
+  Max: 180
+
+# case文のwhenは適切にインデントする
+Layout/CaseIndentation:
+  Enabled: true
+
+# コメントのインデントを整える
+Layout/CommentIndentation:
+  Enabled: true
+
+# 空行の設定
+Layout/EmptyLines:
+  Enabled: true
+
+# インデントの幅はスペース2個
+Layout/IndentationWidth:
+  Enabled: true
+
+# コロンの後にはスペースを1個入れる
+Layout/SpaceAfterColon:
+  Enabled: true
+
+# カンマの後にはスペースを1個入れる
+Layout/SpaceAfterComma:
+  Enabled: true
+
+# デフォルトパラメータの=の周りにはスペースを1個ずつ入れる
+Layout/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+
+# キーワードの周りにはスペースを1個ずつ入れる
+Layout/SpaceAroundKeyword:
+  Enabled: true
+
+# 演算子の周りにはスペースを1個ずつ入れる
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+# 最初の引数の前にはスペースを入れない
+Layout/SpaceBeforeFirstArg:
+  Enabled: true
+
+# ブロックの { の前にはスペースを1個入れる
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+# ブロック内の { } の内側にはスペースを1個ずつ入れる
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+# ハッシュリテラルの { } の内側にはスペースを1個ずつ入れる
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+# 括弧内の最初と最後にはスペースを入れない
+Layout/SpaceInsideParens:
+  Enabled: true
+
+# インデントはタブまたはスペースを使う
+Layout/IndentationStyle:
+  Enabled: true
+
+# ファイルの最後には空行を1行入れる
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+# 行末の不要なスペースを削除
+Layout/TrailingWhitespace:
+  Enabled: true
+
+# ブロックの開始と終了を揃える
+Layout/BlockAlignment:
+  Enabled: true
+
+# ハッシュのキーと値の位置を揃える
+Layout/HashAlignment:
+  Enabled: true
+
+# インデントの一貫性を保つ
+Layout/IndentationConsistency:
+  Enabled: true
+
+# 最初のインデントを正しく設定
+Layout/InitialIndentation:
+  Enabled: true
+
+# 複数行の配列の中括弧のレイアウト
+Layout/MultilineArrayBraceLayout:
+  EnforcedStyle: symmetrical
+
+# ハッシュリテテラルのカッコのインデントを揃える
+Layout/FirstHashElementIndentation:
+  Enabled: true
+
+# ============ Lint ============
+# https://docs.rubocop.org/rubocop/1.51/cops_lint.html
+
+# デバッグ用のメソッド（例：debugger）はコード内に残さない
+Lint/Debugger:
+  Enabled: true
+
+# 括弧が必要な場合にその有無を確認する
+Lint/RequireParentheses:
+  Enabled: true
+
+# 条件式内での変数への代入はしない
+Lint/AssignmentInCondition:
+  Enabled: true
+
+# 不要なCopの無効化コメントがコード内に残っていないか確認する（無効化）
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+
+# 無用なメソッド定義（例：空のメソッド）が存在しないか確認する（無効化）
+Lint/UselessMethodDefinition:
+  Enabled: false
+
+# superメソッドが適切に呼び出されているか確認する（無効化）
+Lint/MissingSuper:
+  Enabled: false
+
+# ============ Metrics ============
+# コードの複雑性や長さに関する設定
+# https://docs.rubocop.org/rubocop/1.51/cops_metrics.html
+
+# ABCサイズ（Assignments, Branches, Conditions）の最大許容値
+Metrics/AbcSize:
+  Max: 300
+
+# クラスの行数の最大許容値
+Metrics/ClassLength:
+  Max: 1000
+
+# ブロック（do ~ end）の行数の最大許容値
+Metrics/BlockLength:
+  Max: 869
+
+# サイクロマティック複雑性（条件分岐の複雑性）の最大許容値
+Metrics/CyclomaticComplexity:
+  Max: 32
+
+# メソッドの行数の最大許容値
+Metrics/MethodLength:
+  Max: 251
+
+# 知覚的な複雑性（読み手が感じる複雑性）の最大許容値
+Metrics/PerceivedComplexity:
+  Max: 32
+
+# ============ Naming ============
+# https://docs.rubocop.org/rubocop/1.51/cops_naming.html
+
+# アクセサメソッド（getter, setter）の命名規則を確認する
+Naming/AccessorMethodName:
+  Enabled: true
+
+# 識別子にASCII文字以外が使用されていないか確認する
+Naming/AsciiIdentifiers:
+  Enabled: true
+
+# 二項演算子のパラメータ名が適切か確認する
+Naming/BinaryOperatorParameterName:
+  Enabled: true
+
+# クラスとモジュールの名前がCamelCase形式になっているか確認する
+Naming/ClassAndModuleCamelCase:
+  Enabled: true
+
+# ブロックの転送（&block）が適切に行われているか確認する
+Naming/BlockForwarding:
+  Enabled: true
+
+# ブロック内のパラメータ名が適切か確認する
+Naming/BlockParameterName:
+  Enabled: true
+
+# 定数名がすべて大文字であるか確認する
+Naming/ConstantName:
+  Enabled: true
+
+# ファイル名がRubyの命名規則に従っているか確認する
+Naming/FileName:
+  Enabled: true
+
+# ヒアドキュメントのデリミタが大文字であるか確認する
+Naming/HeredocDelimiterCase:
+  Enabled: true
+
+# ヒアドキュメントのデリミタの命名が適切であるか確認する
+Naming/HeredocDelimiterNaming:
+  Enabled: true
+
+# メモ化されたインスタンス変数（@_foo）の命名が適切であるか確認する
+Naming/MemoizedInstanceVariableName:
+  Enabled: true
+
+# メソッド名がRubyの命名規則に従っているか確認する
+Naming/MethodName:
+  Enabled: true
+
+# メソッドのパラメータ名が適切であるか確認する
+Naming/MethodParameterName:
+  Enabled: true
+
+# rescue節で捕捉した例外を格納する変数名が適切であるか確認する
+Naming/RescuedExceptionsVariableName:
+  Enabled: true
+
+# 一般的な変数名がRubyの命名規則に従っているか確認する
+Naming/VariableName:
+  Enabled: true
+
+# ============ Security ============
+# https://docs.rubocop.org/rubocop/1.51/cops_security.html
+
+# セキュリティ関連のルールは全て有効にする
+Security:
+  Enabled: true
+
+# ============ Style ============
+# https://docs.rubocop.org/rubocop/1.51/cops_style.html
+
+# ハッシュリテラルの末尾にカンマつける
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# 配列リテラルの末尾にカンマをつける
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# メソッドの引数の末尾にカンマをつける
+Style/TrailingCommaInArguments:
+  Enabled: true
+
+# メソッド定義の本体が一行の場合、本体を改行して書く
+Style/TrailingBodyOnMethodDefinition:
+  Enabled: true
+
+# `and` と `or` の代わりに `&&` と `||` を使う
+Style/AndOr:
+  Enabled: true
+
+# ハッシュの構文は新しいスタイル（{ a: 1 }）を使う
+Style/HashSyntax:
+  Enabled: true
+
+# メソッド定義には括弧をつける
+Style/MethodDefParentheses:
+  Enabled: true
+
+# 数値リテラルにはアンダースコアを使用する（例：1_000）
+Style/NumericLiterals:
+  Enabled: true
+  Exclude:
+    - "spec/**/*"
+    - "db/**/*"
+
+# 空の配列やハッシュはリテラルで書く（例：[]、{}）
+Style/EmptyLiteral:
+  Enabled: true
+
+# 文字列内で冗長な式展開（#{}）は避ける
+Style/RedundantInterpolation:
+  Enabled: true
+
+# ネストした三項演算子は避ける
+Style/NestedTernaryOperator:
+  Enabled: true
+
+# 複数行にわたる三項演算子は避ける
+Style/MultilineTernaryOperator:
+  Enabled: true
+
+# 並列代入を避ける（a, b = 1, 2 の代わりに a = 1; b = 2）
+Style/ParallelAssignment:
+  Enabled: true
+
+# case文の代わりにハッシュを使う場合、最低でも5つの分岐があるべき
+Style/HashLikeCase:
+  MinBranchesCount: 5
+
+# `unless` の後に `else` は使わない
+Style/UnlessElse:
+  Enabled: true
+
+# `when` の後に `then` を使う
+Style/WhenThen:
+  Enabled: true
+
+# 単語の配列は `%w` で書く
+Style/WordArray:
+  Enabled: true
+
+# シンボルの配列は `%i` で書く
+Style/SymbolArray:
+  Enabled: true
+
+# メソッド呼び出しのネストした括弧は避ける
+Style/NestedParenthesizedCalls:
+  Enabled: true
+
+# `alias` の代わりに `alias_method` を使う
+Style/Alias:
+  Enabled: true
+
+# オブジェクトのクラスを比較する際は `instance_of?` メソッドを使う
+Style/ClassEqualityComparison:
+  Enabled: true
+
+# 範囲オブジェクトに対する `.each` の代わりに `.times` を使う
+Style/EachForSimpleLoop:
+  Enabled: true
+
+# `each` の代わりに `each_with_object` を使う場合がある
+Style/EachWithObject:
+  Enabled: true
+
+# ガード節を使う場合は一行で書く
+Style/GuardClause:
+  Enabled: true
+
+# 単一の式の場合は `if` や `unless` の後置形式を使う
+Style/IfUnlessModifier:
+  Enabled: true
+
+# ラムダは `-> {}` 形式で書く
+Style/Lambda:
+  Enabled: true
+
+# ラムダを呼び出す際は `call` メソッドを使う
+Style/LambdaCall:
+  Enabled: true
+
+# ブロックのデリミタは `do/end` か `{}` のどちらか一貫して使う
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+# コメントのアノテーション（TODO, FIXMEなど）は大文字で書く
+Style/CommentAnnotation:
+  Enabled: true
+
+# `else` が不要な場合は書かない
+Style/EmptyElse:
+  Enabled: true
+
+# 配列の最後の要素としてハッシュを使う場合、明示的に波括弧を使う
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+# `when` と `then` は同じ行に書かない
+Style/MultilineWhenThen:
+  Enabled: true
+
+# `File.expand_path` の引数は配列で渡す
+Style/ExpandPathArguments:
+  Enabled: true
+
+# グローバル変数は使用しない
+Style/GlobalVars:
+  Enabled: true
+
+# クラス変数は使用しない
+Style/ClassVars:
+  Enabled: true
+
+# `if` の否定形を使わない（`if !x` の代わりに `unless x`）
+Style/NegatedIf:
+  Enabled: true
+
+# `while` の否定形を使わない（`while !x` の代わりに `until x`）
+Style/NegatedWhile:
+  Enabled: true
+
+# `BEGIN` ブロックは使用しない
+Style/BeginBlock:
+  Enabled: true
+
+# `END` ブロックは使用しない
+Style/EndBlock:
+  Enabled: true
+
+# `attr` メソッドは使用しない（`attr_reader`、`attr_writer`、`attr_accessor` を使う）
+Style/Attr:
+  Enabled: true
+
+# クラスメソッドの定義は `self.method` 形式で書く
+Style/ClassMethods:
+  Enabled: true
+
+# シングルクオートを使う
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+# ============ Rails ============
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactioncontrollerflashbeforerender
+
+# Railsに関するルールは全て有効し、適用しないルールのみ無効化する
+# TODO: Railsのルールもホワイトリスト化する
+Rails:
+  Enabled: true
+
+# 未知の環境名を使用しない
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - heroku
+    - heroku?
+    - development
+    - test
+  Exclude:
+    - "db/seeds.rb"
+
+# ヘルパーメソッド内でインスタンス変数を使用しない
+Rails/HelperInstanceVariable:
+  Enabled: true
+  Exclude:
+    - "app/helpers/clinic_application_helper.rb"
+
+# Time.currentを使った足し算・引き算を行わない
+Rails/DurationArithmetic:
+  Enabled: true
+
+# mapの代わりにpluckが使える場合はpluckを使う
+Rails/Pluck:
+  Enabled: true
+
+# travel_backを使わない
+Rails/RedundantTravelBack:
+  Enabled: true
+
+# SQLで否定形の条件が使われている場合は、where.notを使う
+Rails/WhereNot:
+  Enabled: true
+
+# 日付の範囲を指定する際は簡潔に書く(例: date.beginning_of_day..date.end_of_day の代わりに date.all_day を使う)
+Rails/ExpandedDateRange:
+  Enabled: true
+
+# タイムゾーンを明示的に設定する（無効化）
+Rails/TimeZone:
+  Enabled: false
+
+# Dateメソッドを使用しない（無効化）
+Rails/Date:
+  Enabled: false
+
+# ファイルパスの生成はRailsのヘルパーを使用する（無効化）
+Rails/FilePath:
+  Enabled: false
+
+# 関連付けに`inverse_of`オプションを使用する（無効化）
+Rails/InverseOf:
+  Enabled: false
+
+# `html_safe`などの出力安全メソッドを使用しない（無効化）
+Rails/OutputSafety:
+  Enabled: false
+
+# アクションフィルター（before_actionなど）はレキシカルスコープで使用する（無効化）
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+# 一度のマイグレーションで複数のテーブル変更を行わない（無効化）
+Rails/BulkChangeTable:
+  Enabled: false
+
+# ユニークバリデーションがある場合は、インデックスも追加する（無効化）
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+# ============ RSpec ============
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html
+
+# RSpecに関するルールは全て有効し、適用しないルールのみ無効化する
+# TODO: RSpecのルールもホワイトリスト化する
+RSpec:
+  Enabled: true
+
+# 1つのテストケースでのexpectの最大数
+RSpec/MultipleExpectations:
+  Max: 32
+
+# 1つのテストケースでのmemoized helper（let）の最大数
+RSpec/MultipleMemoizedHelpers:
+  Max: 26
+
+# ネストしたグループの最大数
+RSpec/NestedGroups:
+  Max: 9
+
+# 1つのテストケースの最大行数
+RSpec/ExampleLength:
+  Max: 43
+  Exclude:
+    - "spec/system/**/*"
+
+# Booleanとnilのテストはeqではなくbeを使う
+RSpec/BeEq:
+  Enabled: true
+
+# nilのテストはbe_nilを使う
+RSpec/BeNil:
+  Enabled: true
+
+# itやcontextの空白削除
+RSpec/ExcessiveDocstringSpacing:
+  Enabled: true
+
+# メソッドチェーンを使わない（無効化）
+RSpec/MessageChain:
+  Enabled: false
+
+# before(:all), after(:all)を使わない（無効化）
+RSpec/BeforeAfterAll:
+  Enabled: false
+
+# contextの説明文に特定の単語を使わない（無効化）
+RSpec/ContextWording:
+  Enabled: false
+
+# 最後のletの後に空行を入れる（無効化）
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: false
+
+# フック（before, after, around）の後に空行を入れる（無効化）
+RSpec/EmptyLineAfterHook:
+  Enabled: false
+
+# subjectの後に空行を入れる（無効化）
+RSpec/EmptyLineAfterSubject:
+  Enabled: false
+
+# let!を使わない（無効化）
+RSpec/LetSetup:
+  Enabled: false
+
+# subjectに名前をつけない（無効化）
+RSpec/NamedSubject:
+  Enabled: false
+
+# letが散らばらないようにする（無効化）
+RSpec/ScatteredLet:
+  Enabled: false
+
+# 同じ説明文を持つexample groupを避ける（無効化）
+RSpec/RepeatedExampleGroupDescription:
+  Enabled: false
+
+# predicate matcherを使わない（無効化）
+RSpec/PredicateMatcher:
+  Enabled: false
+
+# CapybaraのFeatureメソッドを使わない（無効化）
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+
+# subjectを先頭に書く（無効化）
+RSpec/LeadingSubject:
+  Enabled: false
+
+# HTTPステータスコードをシンボルで書く（無効化）
+RSpec/Rails/HttpStatus:
+  Enabled: false
+
+# predicateメソッドの命名規則（無効化）
+Naming/PredicateName:
+  Enabled: false
+
+# any_instance_ofを使わない（無効化）
+RSpec/AnyInstance:
+  Enabled: false
+
+# 無効なexpectを使わない（無効化）
+RSpec/VoidExpect:
+  Enabled: false
+
+# describeにクラスを指定する（無効化）
+RSpec/DescribeClass:
+  Enabled: false
+
+# expectの変更をテストする（無効化）
+RSpec/ExpectChange:
+  Enabled: false
+
+# ファイルパスが正しいか確認する（無効化）
+RSpec/FilePath:
+  Enabled: false
+
+# described_classを使わない（無効化）
+RSpec/DescribedClass:
+  Enabled: false
+
+# インスタンス変数を使わない（無効化）
+RSpec/InstanceVariable:
+  Enabled: false
+
+# verified doublesを使う（無効化）
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+# message spiesを使わない（無効化）
+RSpec/MessageSpies:
+  Enabled: false
