@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policymap [
+  <!ELEMENT policymap (policy)+>
+  <!ATTLIST policymap xmlns CDATA #FIXED ''>
+  <!ELEMENT policy EMPTY>
+  <!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
+    name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
+    stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
+]>
+<policymap>
+  <policy domain="resource" name="memory" value="256MiB"/>
+  <policy domain="resource" name="map" value="512MiB"/>
+  <policy domain="resource" name="width" value="16KP"/>
+  <policy domain="resource" name="height" value="16KP"/>
+  <policy domain="resource" name="area" value="128MB"/>
+  <policy domain="resource" name="disk" value="1GiB"/>
+  <!-- use curl -->
+  <policy domain="delegate" rights="none" pattern="*" />
+  <!-- in order to avoid to get image with password text -->
+  <policy domain="path" rights="none" pattern="*"/>
+  <policy domain="path" rights="read | write" pattern="/tmp/*"/>
+  <!-- disable format types -->
+  <policy domain="coder" rights="none" pattern="*" />
+  <policy domain="coder" rights="read | write" pattern="{PNG,JPEG,JPG,GIF,HEIF,HEIC}" />
+</policymap>
