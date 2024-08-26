@@ -4,7 +4,7 @@ ARG pgversion=13
 ARG secret_key_base
 ENV SECRET_KEY_BASE $secret_key_base
 ENV LANG ja_JP.UTF-8
-ENV APP_HOME /rails-api
+ENV APP_HOME /qa-api
 
 RUN apt update && \
   apt install -y curl nodejs file tzdata less lsb-release wget gnupg2 graphviz\
@@ -42,5 +42,6 @@ WORKDIR $APP_HOME
 RUN mkdir -p tmp/pids
 
 # NOTE: Make the contents from here on up the same in Dockerfile.local and Dockerfile
+CMD [ "rm" ,"-f","tmp/pids/server.pid" , "&&","bin/bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0", "-d"]
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+EXPOSE 3000
