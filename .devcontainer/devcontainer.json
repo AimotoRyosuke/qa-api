@@ -1,0 +1,32 @@
+{
+  "name": "codespaces-rails",
+  "dockerComposeFile": [
+    "../docker-compose.local.yml",
+    "docker-compose.override.yml"
+  ],
+  "workspaceFolder": "/qa-api",
+  "service": "api",
+  "runServices": [
+    "api",
+    "db",
+    "redis"
+    // "smtp"
+  ],
+  "postCreateCommand": "sh .devcontainer/on_create_command.sh",
+  "forwardPorts": [
+    3010,
+    // 8025,
+    5432
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application"
+    },
+    // "8025": {
+    //   "label": "Mail"
+    // },
+    "5432": {
+      "label": "DB"
+    }
+  }
+}
