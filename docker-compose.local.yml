@@ -37,13 +37,13 @@ services:
       AWS_COGNITO_ENABLE: TRUE
       AWS_COGNITO_ENDPOINT: http://cognito-local:9229
     volumes:
-      - .:/rails-api:cached
-      - /rails-api/vendor
-      - /rails-api/tmp
-      - ./log:/rails-api/log
-      - ./tmp/screenshots:/rails-api/tmp/screenshots
-      - /rails-api/.git
-      - gem-data:/rails-api/bundle
+      - .:/qa-api:cached
+      - /qa-api/vendor
+      - /qa-api/tmp
+      - ./log:/qa-api/log
+      - ./tmp/screenshots:/qa-api/tmp/screenshots
+      - /qa-api/.git
+      - gem-data:/qa-api/bundle
     ports:
       - "3010:3000"
       - "3443:3443"
@@ -53,14 +53,14 @@ services:
     networks:
       vpc:
         ipv4_address: 10.1.0.10
-  selenium_chrome:
-    image: seleniarm/standalone-chromium:116.0
-    logging:
-      driver: none
-    shm_size: "2gb"
-    networks:
-      vpc:
-        ipv4_address: 10.1.0.4
+  # selenium_chrome:
+  #   image: seleniarm/standalone-chromium:116.0
+  #   logging:
+  #     driver: none
+  #   shm_size: "2gb"
+  #   networks:
+  #     vpc:
+  #       ipv4_address: 10.1.0.4
   # smtp:
   #   image: mailhog/mailhog
   #   ports:
@@ -103,15 +103,15 @@ services:
     ports:
       - "9229:9229"
     environment:
-      LINCWELL_HOST_NAME: api
-      LINCWELL_API_TOKEN: local
+      QA_HOST_NAME: api
+      QA_API_TOKEN: local
     volumes:
       - .cognito:/app/.cognito
     networks:
       vpc:
         ipv4_address: 10.1.0.8
   # lambda:
-  #   container_name: lincwell_lambda
+  #   container_name: qa_lambda
   #   build:
   #     context: ../cognito-patient-triggers/
   #     dockerfile: Dockerfile
@@ -123,17 +123,17 @@ services:
   #     vpc:
   #       ipv4_address: 10.1.0.9
   # frontend:
-  #   container_name: lincwell_mobile
+  #   container_name: qa_mobile
   #   build:
-  #     context: ../lincwell-mobile
+  #     context: ../qa-mobile
   #     dockerfile: Dockerfile
   #   stdin_open: true
   #   tty: true
   #   restart: always
   #   env_file:
-  #     - ../lincwell-mobile/.env.development.docker
+  #     - ../qa-mobile/.env.development.docker
   #   volumes:
-  #     - ../lincwell-mobile/:/app
+  #     - ../qa-mobile/:/app
   #     - /app/node_modules
   #   ports:
   #     - "8100:8100"
