@@ -17,6 +17,9 @@ gem 'data_migrate', '~> 8.4.2'
 gem 'config', '~>3.1.1'
 gem 'dotenv-rails', '~> 2.8.1'
 
+# Decorator
+gem 'active_decorator', '1.1.1'
+
 # for search
 gem 'ransack', '~> 3.1.0'
 
@@ -26,28 +29,31 @@ gem 'graphql-batch', '0.5.3'
 
 # for admin user
 gem 'devise', '4.8.0'
+gem 'rails_admin', '~> 3.1.2'
+
+# for i18n
+gem 'rails-i18n', '~> 7.0.6'
 
 # for s3_file_server
 gem 'aws-sdk-s3', '~> 1.156'
 gem 'image_processing', '1.12.2'
 gem 'shrine', '~> 3.4'
 
+# for cognito
+gem 'aws-sdk-cognitoidentityprovider', '~> 1.97'
+
 # Redis for cache/session store and action cable.
 gem 'hiredis', '0.6.3'
 gem 'redis', '~> 4.0'
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+# CORS for cross-origin resource sharing
+gem 'rack-cors', '~> 1.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '~> 1.15.0', require: false
-
-
-# for cognito
-gem 'aws-sdk-cognitoidentityprovider', '~> 1.97'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -61,12 +67,39 @@ group :development, :test do
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'listen', '>= 3.0.5', '< 3.8.1'
+  gem 'web-console', '~> 4.2'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring', '~> 4.2.0'
+  # Annotate Rails classes with schema
+  gem 'annotate', '~>3.2.0'
+  # for graphql IDE
+  gem 'graphiql-rails', '1.8.0'
+
+  gem 'rubocop', '1.51.0', require: false
+  gem 'rubocop-rails', '2.14.2', require: false
+  gem 'rubocop-rspec', '2.10.0', require: false
+
+  gem 'danger', '>= 9.3.1'
+  gem 'ruby-lsp', '0.13.2'
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem 'active_decorator-rspec', '0.0.9'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '3.39.2'
+  gem 'selenium-webdriver', '4.10.0'
+  # Easy installation and use of selenium webdriver browsers to run system tests
+  gem 'webdrivers', '4.7.0'
+  # when run RSpec
+  gem 'pdf-inspector', '1.3.0', require: 'pdf/inspector'
+  gem 'rails-controller-testing', '1.0.5'
+  gem 'rspec-html-matchers', '~> 0.10.0'
+  gem 'rspec_junit_formatter', '0.5.1'
+  gem 'shoulda-matchers', '5.1.0'
+  gem 'simplecov', '~>0.22.0', require: false
+  gem 'stripe-ruby-mock', '~> 3.1.0'
+  gem 'webmock', '3.14.0'
 end
+gem 'sassc-rails'
