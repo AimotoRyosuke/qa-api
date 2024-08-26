@@ -6,16 +6,16 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV['TMP_WORKING_DATABASE'] || 'rails-api_development' %>
-  host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
+  database: <%= ENV['TMP_WORKING_DATABASE'] || 'qa-api_development' %>
+  host: <%= ENV['DB_HOST'] || '10.1.0.2' %>
   username: postgres
   password: password
   port: 5432
 
 test:
   <<: *default
-  database: rails-api_test
-  host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
+  database: qa-api_test
+  host: <%= ENV['DB_HOST'] || '10.1.0.2' %>
   username: postgres
   password: password
   port: 5432
