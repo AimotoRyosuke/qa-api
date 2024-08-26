@@ -1,0 +1,158 @@
+services:
+  db:
+    image: postgres:13
+    ports:
+      - "5410:5432"
+      - "127.0.0.1:5431:5432"
+    volumes:
+      - pg13-data:/var/lib/postgresql/data:delegated
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      vpc:
+        ipv4_address: 10.1.0.2
+  redis:
+    image: redis:6.2.6
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data:delegated
+    networks:
+      vpc:
+        ipv4_address: 10.1.0.3
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    stdin_open: true
+    tty: true
+    restart: always
+    env_file:
+      - variables-for-local.env
+    environment:
+      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
+      CAPYBARA_SERVER_HOST: api
+      CAPYBARA_APP_HOST: http://api
+      AWS_COGNITO_ENABLE: TRUE
+      AWS_COGNITO_ENDPOINT: http://cognito-local:9229
+    volumes:
+      - .:/rails-api:cached
+      - /rails-api/vendor
+      - /rails-api/tmp
+      - ./log:/rails-api/log
+      - ./tmp/screenshots:/rails-api/tmp/screenshots
+      - /rails-api/.git
+      - gem-data:/rails-api/bundle
+    ports:
+      - "3010:3000"
+      - "3443:3443"
+    depends_on:
+      - db
+      - cognito-local
+    networks:
+      vpc:
+        ipv4_address: 10.1.0.10
+  selenium_chrome:
+    image: seleniarm/standalone-chromium:116.0
+    logging:
+      driver: none
+    shm_size: "2gb"
+    networks:
+      vpc:
+        ipv4_address: 10.1.0.4
+  # smtp:
+  #   image: mailhog/mailhog
+  #   ports:
+  #     - '8025:8025'
+  #   environment:
+  #     MH_STORAGE: maildir
+  #     MH_MAILDIR_PATH: /tmp
+  #   networks:
+  #     vpc:
+  #       ipv4_address: 10.1.0.5
+  # minio:
+  #   image: minio/minio:RELEASE.2024-06-13T22-53-53Z
+  #   ports:
+  #     - 9000:9000
+  #     - 9001:9001
+  #   environment:
+  #     - MINIO_ROOT_USER=minio
+  #     - MINIO_ROOT_PASSWORD=minio123minio
+  #   volumes:
+  #     - minio-storage:/data
+  #   command: ["server", "/data", "--console-address", ":9001"]
+  #   networks:
+  #     vpc:
+  #       ipv4_address: 10.1.0.6
+  # createbuckets:
+  #   image: minio/mc:RELEASE.2024-06-12T14-34-03Z
+  #   depends_on:
+  #     - minio
+  #   entrypoint: >
+  #     /bin/sh -c "
+  #     until (/usr/bin/mc config host add myminio http://minio:9000 minio minio123minio) do echo '...waiting...' && sleep 1; done;
+  #     /usr/bin/mc mb -p myminio/cf-sandbox;
+  #     exit 0;
+  #     "
+  #   networks:
+  #     vpc:
+  #       ipv4_address: 10.1.0.7
+  cognito-local:
+    image: mani3/cognito-local
+    ports:
+      - "9229:9229"
+    environment:
+      LINCWELL_HOST_NAME: api
+      LINCWELL_API_TOKEN: local
+    volumes:
+      - .cognito:/app/.cognito
+    networks:
+      vpc:
+        ipv4_address: 10.1.0.8
+  # lambda:
+  #   container_name: lincwell_lambda
+  #   build:
+  #     context: ../cognito-patient-triggers/
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3002:3002"
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     vpc:
+  #       ipv4_address: 10.1.0.9
+  # frontend:
+  #   container_name: lincwell_mobile
+  #   build:
+  #     context: ../lincwell-mobile
+  #     dockerfile: Dockerfile
+  #   stdin_open: true
+  #   tty: true
+  #   restart: always
+  #   env_file:
+  #     - ../lincwell-mobile/.env.development.docker
+  #   volumes:
+  #     - ../lincwell-mobile/:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - "8100:8100"
+  #   networks:
+  #     vpc:
+  #       ipv4_address: 10.1.0.11
+
+volumes:
+  pg13-data:
+    driver: local
+  redis-data:
+    driver: local
+  minio-storage:
+    driver: local
+  gem-data:
+    driver: local
+
+networks:
+  vpc:
+    ipam:
+      config:
+        - subnet: 10.1.0.0/24
