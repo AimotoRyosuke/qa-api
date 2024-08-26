@@ -41,7 +41,6 @@ WORKDIR $APP_HOME
 # Create directory for puma pid file
 RUN mkdir -p tmp/pids
 
-# NOTE: Make the contents from here on up the same in Dockerfile.local and Dockerfile
-CMD [ "rm" ,"-f","tmp/pids/server.pid" , "&&","bin/bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0", "-d"]
+ENTRYPOINT [ "./entrypoint.sh" ]
 
 EXPOSE 3000
