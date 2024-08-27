@@ -6,3 +6,4 @@ bin/rails db:create db:schema:load
 sleep 10
 
 bin/rails data:migrate
+bin/rails db:seed
