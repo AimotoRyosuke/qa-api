@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users', to: 'users#index'
+  get 'users/:id', to: 'users#show'
+  get 'tags', to: 'tags#index'
+  get 'questions', to: 'questions#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
