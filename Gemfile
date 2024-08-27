@@ -56,15 +56,24 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', '~> 1.15.0', require: false
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem 'debug', '~> 1.9.2'
+  gem 'factory_bot_rails', '6.2.0'
+  gem 'rspec-rails', '~> 5.1.2'
+  gem 'rspec-retry', '0.6.2'
+  # Use fake data for dev and test
+  gem 'faker', '3.1.1'
+  gem 'gimei', '~> 1.1'
+  # Static analyzer
+  gem 'brakeman', '6.0.1'
+  gem 'bullet', '7.0.7'
+  gem 'rails_best_practices', '1.23.2'
+  gem 'rails-erd', '1.6.1'
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
+  # packwerk可視化
+  gem 'graphwerk', '~> 1.2.1'
+  gem 'webrick', '1.7.0'
 end
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
