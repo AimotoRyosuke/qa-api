@@ -108,7 +108,7 @@ GEM
       smart_properties
     bigdecimal (3.1.8)
     bindex (0.8.1)
-    bootsnap (1.15.0)
+    bootsnap (1.18.4)
       msgpack (~> 1.2)
     brakeman (6.0.1)
     builder (3.3.0)
@@ -622,7 +622,7 @@ DEPENDENCIES
   annotate (~> 3.2.0)
   aws-sdk-cognitoidentityprovider (~> 1.97)
   aws-sdk-s3 (~> 1.156)
-  bootsnap (~> 1.15.0)
+  bootsnap (~> 1.18.4)
   brakeman (= 6.0.1)
   bullet (= 7.0.7)
   capybara (= 3.39.2)
