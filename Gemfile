@@ -24,7 +24,7 @@ gem 'active_decorator', '1.1.1'
 gem 'ransack', '~> 3.1.0'
 
 # for graphql
-gem 'graphql', '2.0.14'
+gem 'graphql', '2.3.14'
 gem 'graphql-batch', '0.6.0'
 
 # for admin user
