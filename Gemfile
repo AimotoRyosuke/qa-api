@@ -97,7 +97,7 @@ end
 group :test do
   gem 'active_decorator-rspec', '0.0.9'
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '3.39.2'
+  gem 'capybara', '3.40.0'
   gem 'selenium-webdriver', '4.10.0'
   # Easy installation and use of selenium webdriver browsers to run system tests
   gem 'webdrivers', '5.3.1'
