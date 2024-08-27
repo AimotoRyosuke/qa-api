@@ -248,7 +248,7 @@ GEM
       railties
       sprockets-rails
     graphql (2.0.14)
-    graphql-batch (0.5.3)
+    graphql-batch (0.6.0)
       graphql (>= 1.12.18, < 3)
       promise.rb (~> 0.7.2)
     graphwerk (1.2.1)
@@ -632,7 +632,7 @@ DEPENDENCIES
   gimei (~> 1.1)
   graphiql-rails (= 1.8.0)
   graphql (= 2.0.14)
-  graphql-batch (= 0.5.3)
+  graphql-batch (= 0.6.0)
   graphwerk (~> 1.2.1)
   hiredis (= 0.6.3)
   image_processing (= 1.12.2)
