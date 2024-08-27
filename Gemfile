@@ -36,7 +36,7 @@ gem 'rails-i18n', '~> 7.0.6'
 
 # for s3_file_server
 gem 'aws-sdk-s3', '~> 1.156'
-gem 'image_processing', '1.12.2'
+gem 'image_processing', '1.13.0'
 gem 'shrine', '~> 3.4'
 
 # for cognito
