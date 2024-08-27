@@ -53,7 +53,7 @@ gem 'rack-cors', '~> 1.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '~> 1.15.0', require: false
+gem 'bootsnap', '~> 1.18.4', require: false
 
 group :development, :test do
   gem 'debug', '~> 1.9.2'
