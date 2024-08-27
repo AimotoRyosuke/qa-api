@@ -527,7 +527,7 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     sexp_processor (4.17.2)
-    shoulda-matchers (5.1.0)
+    shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
     shrine (3.6.0)
       content_disposition (~> 1.0)
@@ -660,7 +660,7 @@ DEPENDENCIES
   ruby-lsp (= 0.13.2)
   sassc-rails
   selenium-webdriver (= 4.10.0)
-  shoulda-matchers (= 5.1.0)
+  shoulda-matchers (= 6.4.0)
   shrine (~> 3.4)
   simplecov (~> 0.22.0)
   spring (~> 4.2.0)
