@@ -109,6 +109,6 @@ group :test do
   gem 'shoulda-matchers', '5.1.0'
   gem 'simplecov', '~>0.22.0', require: false
   gem 'stripe-ruby-mock', '~> 3.1.0'
-  gem 'webmock', '3.14.0'
+  gem 'webmock', '3.23.1'
 end
 gem 'sassc-rails'
