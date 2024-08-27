@@ -100,7 +100,7 @@ group :test do
   gem 'capybara', '3.39.2'
   gem 'selenium-webdriver', '4.10.0'
   # Easy installation and use of selenium webdriver browsers to run system tests
-  gem 'webdrivers', '4.7.0'
+  gem 'webdrivers', '5.3.1'
   # when run RSpec
   gem 'pdf-inspector', '1.3.0', require: 'pdf/inspector'
   gem 'rails-controller-testing', '1.0.5'
