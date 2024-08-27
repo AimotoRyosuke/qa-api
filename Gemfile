@@ -25,7 +25,7 @@ gem 'ransack', '~> 3.1.0'
 
 # for graphql
 gem 'graphql', '2.0.14'
-gem 'graphql-batch', '0.5.3'
+gem 'graphql-batch', '0.6.0'
 
 # for admin user
 gem 'devise', '4.8.0'
