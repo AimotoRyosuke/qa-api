@@ -71,7 +71,7 @@ group :development, :test do
 
   # packwerk可視化
   gem 'graphwerk', '~> 1.2.1'
-  gem 'webrick', '1.7.0'
+  gem 'webrick', '1.8.1'
 end
 
 
