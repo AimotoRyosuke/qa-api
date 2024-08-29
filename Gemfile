@@ -91,7 +91,7 @@ group :development do
   gem 'rubocop-rspec', '2.10.0', require: false
 
   gem 'danger', '>= 9.3.1'
-  gem 'ruby-lsp', '0.13.2'
+  gem 'ruby-lsp', '0.17.16'
 end
 
 group :test do
