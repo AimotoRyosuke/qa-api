@@ -44,7 +44,7 @@ gem 'aws-sdk-cognitoidentityprovider', '~> 1.97'
 
 # Redis for cache/session store and action cable.
 gem 'hiredis', '0.6.3'
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.3'
 
 # CORS for cross-origin resource sharing
 gem 'rack-cors', '~> 2.0'
