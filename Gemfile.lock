@@ -368,7 +368,7 @@ GEM
       ruby-rc4
       ttfunk
     pg (1.5.7)
-    prism (0.19.0)
+    prism (1.0.0)
     promise.rb (0.7.4)
     psych (5.1.2)
       stringio
@@ -444,6 +444,8 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
+    rbs (3.5.3)
+      logger
     rchardet (1.8.0)
     rdoc (6.7.0)
       psych (>= 4.0.0)
@@ -507,10 +509,11 @@ GEM
       rubocop (~> 1.19)
     ruby-graphviz (1.2.5)
       rexml
-    ruby-lsp (0.13.2)
+    ruby-lsp (0.17.17)
       language_server-protocol (~> 3.17.0)
-      prism (>= 0.19.0, < 0.20)
-      sorbet-runtime (>= 0.5.5685)
+      prism (~> 1.0)
+      rbs (>= 3, < 4)
+      sorbet-runtime (>= 0.5.10782)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
     ruby-vips (2.2.2)
@@ -545,7 +548,7 @@ GEM
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
-    sorbet-runtime (0.5.11545)
+    sorbet-runtime (0.5.11553)
     spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -663,7 +666,7 @@ DEPENDENCIES
   rubocop (= 1.65.1)
   rubocop-rails (= 2.26.0)
   rubocop-rspec (= 2.10.0)
-  ruby-lsp (= 0.13.2)
+  ruby-lsp (= 0.17.17)
   sassc-rails
   selenium-webdriver (= 4.10.0)
   shoulda-matchers (= 6.4.0)
