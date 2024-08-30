@@ -28,7 +28,7 @@ gem 'graphql', '2.3.14'
 gem 'graphql-batch', '0.6.0'
 
 # for admin user
-gem 'devise', '4.8.0'
+gem 'devise', '4.9.4'
 gem 'rails_admin', '~> 3.1.2'
 
 # for i18n
