@@ -21,7 +21,7 @@ gem 'dotenv-rails', '~> 2.8.1'
 gem 'active_decorator', '1.1.1'
 
 # for search
-gem 'ransack', '~> 3.1.0'
+gem 'ransack', '~> 4.2.1'
 
 # for graphql
 gem 'graphql', '2.3.14'
