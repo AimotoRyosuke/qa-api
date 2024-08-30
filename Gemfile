@@ -67,7 +67,7 @@ group :development, :test do
   gem 'brakeman', '6.0.1'
   gem 'bullet', '7.0.7'
   gem 'rails_best_practices', '1.23.2'
-  gem 'rails-erd', '1.6.1'
+  gem 'rails-erd', '1.7.2'
 
   # packwerk可視化
   gem 'graphwerk', '~> 1.2.1'
