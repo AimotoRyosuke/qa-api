@@ -509,8 +509,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.52.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (2.10.0)
-      rubocop (~> 1.19)
+    rubocop-rspec (3.0.4)
+      rubocop (~> 1.61)
     ruby-graphviz (1.2.5)
       rexml
     ruby-lsp (0.17.17)
@@ -669,7 +669,7 @@ DEPENDENCIES
   rspec_junit_formatter (= 0.6.0)
   rubocop (= 1.65.1)
   rubocop-rails (= 2.26.0)
-  rubocop-rspec (= 2.10.0)
+  rubocop-rspec (= 3.0.4)
   ruby-lsp (= 0.17.17)
   sassc-rails
   selenium-webdriver (= 4.10.0)
