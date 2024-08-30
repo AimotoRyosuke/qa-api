@@ -108,7 +108,7 @@ group :test do
   gem 'rspec_junit_formatter', '0.6.0'
   gem 'shoulda-matchers', '6.4.0'
   gem 'simplecov', '~>0.22.0', require: false
-  gem 'stripe-ruby-mock', '~> 3.1.0'
+  gem 'stripe-ruby-mock', '~> 4.0.0'
   gem 'webmock', '3.23.1'
 end
 gem 'sassc-rails'
