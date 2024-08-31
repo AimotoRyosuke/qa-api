@@ -14,7 +14,7 @@ gem "jbuilder"
 # migration for actual-data
 gem 'data_migrate', '~> 8.4.2'
 
-gem 'config', '~>3.1.1'
+gem 'config', '~>5.5.1'
 gem 'dotenv-rails', '~> 2.8.1'
 
 # Decorator
