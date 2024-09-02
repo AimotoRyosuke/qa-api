@@ -61,7 +61,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.1.2'
   gem 'rspec-retry', '0.6.2'
   # Use fake data for dev and test
-  gem 'faker', '3.1.1'
+  gem 'faker', '3.4.2'
   gem 'gimei', '~> 1.1'
   # Static analyzer
   gem 'brakeman', '6.0.1'
