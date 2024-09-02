@@ -58,7 +58,7 @@ gem 'bootsnap', '~> 1.18.4', require: false
 group :development, :test do
   gem 'debug', '~> 1.9.2'
   gem 'factory_bot_rails', '6.4.3'
-  gem 'rspec-rails', '~> 5.1.2'
+  gem 'rspec-rails', '~> 6.1.4'
   gem 'rspec-retry', '0.6.2'
   # Use fake data for dev and test
   gem 'faker', '3.1.1'
