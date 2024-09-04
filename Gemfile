@@ -40,7 +40,7 @@ gem 'image_processing', '1.13.0'
 gem 'shrine', '~> 3.4'
 
 # for cognito
-gem 'aws-sdk-cognitoidentityprovider', '~> 1.97'
+gem 'aws-sdk-cognitoidentityprovider', '~> 1.101'
 
 # Redis for cache/session store and action cable.
 gem 'hiredis', '0.6.3'
