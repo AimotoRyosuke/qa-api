@@ -84,7 +84,7 @@ group :development do
   # Annotate Rails classes with schema
   gem 'annotate', '~>3.2.0'
   # for graphql IDE
-  gem 'graphiql-rails', '1.8.0'
+  gem 'graphiql-rails', '1.10.1'
 
   gem 'rubocop', '1.65.1', require: false
   gem 'rubocop-rails', '2.26.0', require: false

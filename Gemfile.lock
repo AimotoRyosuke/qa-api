@@ -213,9 +213,8 @@ GEM
       rchardet (~> 1.8)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphiql-rails (1.8.0)
+    graphiql-rails (1.10.1)
       railties
-      sprockets-rails
     graphql (2.3.14)
       base64
       fiber-storage
@@ -609,7 +608,7 @@ DEPENDENCIES
   factory_bot_rails (= 6.4.3)
   faker (= 3.4.2)
   gimei (~> 1.1)
-  graphiql-rails (= 1.8.0)
+  graphiql-rails (= 1.10.1)
   graphql (= 2.3.14)
   graphql-batch (= 0.6.0)
   graphwerk (~> 1.2.1)
