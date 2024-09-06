@@ -86,7 +86,7 @@ group :development do
   # for graphql IDE
   gem 'graphiql-rails', '1.10.1'
 
-  gem 'rubocop', '1.65.1', require: false
+  gem 'rubocop', '1.66.1', require: false
   gem 'rubocop-rails', '2.26.0', require: false
   gem 'rubocop-rspec', '3.0.4', require: false
 
