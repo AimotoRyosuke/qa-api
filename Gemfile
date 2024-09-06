@@ -12,7 +12,7 @@ gem "puma", "~> 6.4"
 gem "jbuilder"
 
 # migration for actual-data
-gem 'data_migrate', '~> 9.4.2'
+gem 'data_migrate', '~> 11.0.0'
 
 gem 'config', '~>5.5.1'
 gem 'dotenv-rails', '~> 3.1.2'
