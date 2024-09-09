@@ -5,7 +5,7 @@ gem 'rails', '= 6.1.7.6'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgres as the database for Active Record
-gem 'pg', '1.5.7'
+gem 'pg', '1.5.8'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.4"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
