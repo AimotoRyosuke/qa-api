@@ -88,7 +88,7 @@ group :development do
 
   gem 'rubocop', '1.66.1', require: false
   gem 'rubocop-rails', '2.26.0', require: false
-  gem 'rubocop-rspec', '3.0.4', require: false
+  gem 'rubocop-rspec', '3.0.5', require: false
 
   gem 'danger', '>= 9.3.1'
   gem 'ruby-lsp', '0.17.17'
