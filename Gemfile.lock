@@ -40,7 +40,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_decorator (1.1.1)
+    active_decorator (1.4.1)
+      activesupport
     active_decorator-rspec (0.0.9)
       actionpack
       active_decorator
@@ -587,7 +588,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  active_decorator (= 1.1.1)
+  active_decorator (= 1.4.1)
   active_decorator-rspec (= 0.0.9)
   annotate (~> 3.2.0)
   aws-sdk-cognitoidentityprovider (~> 1.97)

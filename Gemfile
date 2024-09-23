@@ -18,7 +18,7 @@ gem 'config', '~>5.5.1'
 gem 'dotenv-rails', '~> 3.1.2'
 
 # Decorator
-gem 'active_decorator', '1.1.1'
+gem 'active_decorator', '1.4.1'
 
 # for search
 gem 'ransack', '~> 4.2.1'
