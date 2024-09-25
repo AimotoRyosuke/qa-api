@@ -35,7 +35,7 @@ gem 'rails_admin', '~> 3.1.2'
 gem 'rails-i18n', '~> 7.0.6'
 
 # for s3_file_server
-gem 'aws-sdk-s3', '~> 1.156'
+gem 'aws-sdk-s3', '~> 1.166'
 gem 'image_processing', '1.13.0'
 gem 'shrine', '~> 3.4'
 
