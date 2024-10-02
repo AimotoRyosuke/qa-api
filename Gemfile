@@ -65,7 +65,7 @@ group :development, :test do
   gem 'gimei', '~> 1.1'
   # Static analyzer
   gem 'brakeman', '6.0.1'
-  gem 'bullet', '7.0.7'
+  gem 'bullet', '7.2.0'
   gem 'rails_best_practices', '1.23.2'
   gem 'rails-erd', '1.7.2'
 
